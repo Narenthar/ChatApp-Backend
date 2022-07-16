@@ -22,7 +22,6 @@ const io = require('socket.io')(server,{
         methods : ['GET', 'POST']
     }
 })
-
 async function getLastMessageFromRoom(room){
     let roomMessages = await Message.aggregate([
         {$match : {to : room}},
@@ -93,6 +92,10 @@ app.delete('/logout', async(req, res)=>{
 })
 
 } )
+
+app.get('/', (req, res)=>{
+    res.json("Hello")
+})
 
 app.get('/rooms', (req, res)=>{
     res.json(rooms)
