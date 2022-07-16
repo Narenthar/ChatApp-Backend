@@ -18,12 +18,10 @@ const server = require('http').createServer(app);
 const PORT = process.env.PORT || 5001;
 const io = require('socket.io')(server,{
     cors:{
-        origin : 'https://chatapp-narenthar.netlify.app/',
+        origin : 'https://chatapp-narenthar.netlify.app',
         methods : ['GET', 'POST']
     }
 })
-
-
 
 async function getLastMessageFromRoom(room){
     let roomMessages = await Message.aggregate([
